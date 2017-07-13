@@ -43,9 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn= (Button) findViewById(R.id.btn);
         arrayList = new ArrayList<String>();
+
+// Arraylist initialized with a static value
         arrayList.add("Welcome");
         adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, arrayList);
         lvv.setAdapter(adapter);
+
+// Dynamically adding the arraylist by entering values in the edittext
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,10 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         int menuId = item.getItemId();
+
+// opening dialog on clicking the save option in the menu
         if (menuId == R.id.save) {
             AlertDialog.Builder ab = new AlertDialog.Builder(this);
             ab.setTitle("Enter the details");
             View v = getLayoutInflater().inflate(R.layout.optionmenu, null);
+// setting views
             ab.setView(v);
             //lvv = (ListView) v.findViewById(R.id.lv);
             final EditText e1 = (EditText) v.findViewById(R.id.name);
@@ -86,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     gete2 = e2.getText().toString();
                     gete3 = e3.getText().toString();
 
-
+// adding the data
                     finalstring = finalstring + (gete1) + "\n" + gete2 + "\n" + gete3;
                     arrayList.add(finalstring);
                     adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, arrayList);
